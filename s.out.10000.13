@@ -1,0 +1,21 @@
+
+ -t.10000----------------------------------------------
+
+ Input file name: t.10000
+            size: 10000
+
+ algorithm              errors     comp_count           usec            sec
+ ---------------        ------     ----------     ----------     ----------
+ g_selection_sort            0       50005000         388238       0.388238
+ g_insertion_sort            0       25013196         224480        0.22448
+ g_quick_sort                0         166631           3307       0.003307
+ g_quick_sort_opt            0         169222           3056       0.003056
+ g_quick_sort_3w             0         249102           4350        0.00435
+ g_quick_sort_3w_opt         0         249102           4230        0.00423
+ g_merge_sort                0         120496           3933       0.003933
+ g_merge_sort_opt            0         127799           3063       0.003063
+ g_merge_sort_bu             0         123697           3725       0.003725
+ List::Sort                  0         123697           3883       0.003883
+ alt::g_heap_sort            0         239201           5447       0.005447
+ fsu::g_heap_sort            0         235358           5339       0.005339
+ cormen::g_heap_sort         0         235358           5310        0.00531

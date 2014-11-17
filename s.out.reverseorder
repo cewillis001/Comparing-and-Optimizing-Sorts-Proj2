@@ -1,0 +1,21 @@
+
+ -t.reverseorder----------------------------------------------
+
+ Input file name: t.reverseorder
+            size: 0
+
+ algorithm              errors     comp_count           usec            sec
+ ---------------        ------     ----------     ----------     ----------
+ g_selection_sort            0              0              0              0
+ g_insertion_sort            0              0              0              0
+ g_quick_sort                0              0              0              0
+ g_quick_sort_opt            0              0              0              0
+ g_quick_sort_3w             0              0             10          1e-05
+ g_quick_sort_3w_opt         0              0              0              0
+ g_merge_sort                0              0              1          1e-06
+ g_merge_sort_opt            0              1              0              0
+ g_merge_sort_bu             0              0              0              0
+ List::Sort                  0              0              1          1e-06
+ alt::g_heap_sort            0              0              0              0
+ fsu::g_heap_sort            0              0              0              0
+ cormen::g_heap_sort         0              0              0              0

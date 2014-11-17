@@ -1,0 +1,136 @@
+Begin test of generic sort algorithms < char >
+Enter sentinal (character): .
+Enter data ("." to end): rabbit787.
+data as entered: B: rabbit787
+data after copy: A: rabbit787
+                 L: rabbit787
+                 Q: rabbit787
+                 V: rabbit787
+
+== g_selection_sort() ==
+A: 778abbirt
+V: 778abbirt
+Q: 778abbirt
+L: 778abbirt
+
+== g_selection_sort(>) ==
+A: tribba877
+V: tribba877
+Q: tribba877
+L: tribba877
+
+== g_insertion_sort() ==
+A: 778abbirt
+V: 778abbirt
+Q: 778abbirt
+L: 778abbirt
+
+== g_insertion_sort(>) ==
+A: tribba877
+V: tribba877
+Q: tribba877
+L: tribba877
+
+== g_heap_sort() ==
+A: 778abbirt
+V: 778abbirt
+Q: 778abbirt
+
+== alt::g_heap_sort() ==
+A: 778abbirt
+V: 778abbirt
+Q: 778abbirt
+
+== cormen::g_heap_sort() ==
+A: 778abbirt
+V: 778abbirt
+Q: 778abbirt
+
+== g_heap_sort(>) ==
+A: tribba877
+V: tribba877
+Q: tribba877
+
+== alt::g_heap_sort(>) ==
+A: tribba877
+V: tribba877
+Q: tribba877
+
+== cormen::g_heap_sort(>) ==
+A: tribba877
+V: tribba877
+Q: tribba877
+
+== g_merge_sort() ==
+A: 778abbirt
+V: 778abbirt
+Q: 778abbirt
+
+== g_merge_sort(>) ==
+A: tribba877
+V: tribba877
+Q: tribba877
+
+== g_merge_sort_opt() ==
+A: 778abbirt
+V: 778abbirt
+Q: 778abbirt
+
+== g_merge_sort_opt(>) ==
+A: tribba877
+V: tribba877
+Q: tribba877
+
+== g_merge_sort_bu() ==
+A: 778abbirt
+V: 778abbirt
+Q: 778abbirt
+
+== g_merge_sort_bu(>) ==
+A: tribba877
+V: tribba877
+Q: tribba877
+
+== g_quick_sort() ==
+A: 778abbirt
+V: 778abbirt
+Q: 778abbirt
+
+== g_quick_sort(>) ==
+A: tribba877
+V: tribba877
+Q: tribba877
+
+== g_quick_sort_opt() ==
+A: 778abbirt
+V: 778abbirt
+Q: 778abbirt
+
+== g_quick_sort_opt(>) ==
+A: tribba877
+V: tribba877
+Q: tribba877
+
+== g_quick_sort_3w() ==
+A: 778abbirt
+V: 778abbirt
+Q: 778abbirt
+
+== g_quick_sort_3w(>) ==
+A: tribba877
+V: tribba877
+Q: tribba877
+
+== g_quick_sort_3w_opt() ==
+A: 778abbirt
+V: 778abbirt
+Q: 778abbirt
+
+== g_quick_sort_3w_opt(>) ==
+time is 0x3540b57cc0
+A: tribba877
+time is 0x3540b57cc0
+V: tribba877
+Q: tribba877
+
+End test of generic sort algorithms < char >

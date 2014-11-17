@@ -1,0 +1,21 @@
+
+ -t.10000.same----------------------------------------------
+
+ Input file name: t.10000.same
+            size: 10000
+
+ algorithm              errors     comp_count           usec            sec
+ ---------------        ------     ----------     ----------     ----------
+ g_selection_sort            0       50005000         385907       0.385907
+ g_insertion_sort            0           9999            142       0.000142
+ g_quick_sort                0       49995000         787188       0.787188
+ g_quick_sort_opt            0       49994955         786254       0.786254
+ g_quick_sort_3w             0          20000            146       0.000146
+ g_quick_sort_3w_opt         0          20000            144       0.000144
+ g_merge_sort                0          64608           2737       0.002737
+ g_merge_sort_opt            0          64607           1989       0.001989
+ g_merge_sort_bu             0          71712           2541       0.002541
+ List::Sort                  0          71712           2266       0.002266
+ alt::g_heap_sort            0          29994            741       0.000741
+ fsu::g_heap_sort            0          29994            681       0.000681
+ cormen::g_heap_sort         0          29994            656       0.000656

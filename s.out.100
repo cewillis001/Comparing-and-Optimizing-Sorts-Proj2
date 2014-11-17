@@ -1,0 +1,21 @@
+
+ -t.100----------------------------------------------
+
+ Input file name: t.100
+            size: 100
+
+ algorithm              errors     comp_count           usec            sec
+ ---------------        ------     ----------     ----------     ----------
+ g_selection_sort            0           5050             48        4.8e-05
+ g_insertion_sort            0           2481             33        3.3e-05
+ g_quick_sort                0            633             18        1.8e-05
+ g_quick_sort_opt            0            628             17        1.7e-05
+ g_quick_sort_3w             0            941             18        1.8e-05
+ g_quick_sort_3w_opt         0            941             55        5.5e-05
+ g_merge_sort                0            543             27        2.7e-05
+ g_merge_sort_opt            0            568             21        2.1e-05
+ g_merge_sort_bu             0            564             24        2.4e-05
+ List::Sort                  0            564             20          2e-05
+ alt::g_heap_sort            0           1053             31        3.1e-05
+ fsu::g_heap_sort            0           1024             29        2.9e-05
+ cormen::g_heap_sort         0           1024             30          3e-05

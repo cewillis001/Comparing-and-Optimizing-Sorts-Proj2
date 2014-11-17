@@ -1,0 +1,207 @@
+report.txt for Project 2 COP4531
+Caroline E Willis
+cew13e
+
+Title: Improving Performance of MergeSort and QuickSort
+
+Abstract or Executive Summary
+[brief, logical, concise overview of what the report is about and what its
+results and conclusions/recommendations are; this is for the Admiral or online
+library]
+
+Sort algorithms all have various trade-offs which make them ideal for some
+situations and less so for others. This report explores several implementations
+of quick sort and merge sort. For merge sort, it compares top-down, bottom-up,
+and top-down with cutoff (below which insertion sort is used). For quick sort,
+it compares the Cormen quick sort, the Cormen quick sort with a cutoff (below
+which insertion sort is used), as well as the quick sort 3w algorithm, both
+vanilla and cutoff versions.  The purpose of these comparisons is to determine
+what the trade-offs might be.
+
+Results of these comparisons showed that:
+
+Introduction
+
+Sort algorithms all have various trade-offs which make them ideal for some
+situations and less so for others. I investigate those trade-offs using various
+implementations of merge sort and quick sort.
+
+Background
+
+For context, I am going to explore the known runtime and runspace
+characteristics of merge sort and Cormen quick sort.
+
+For merge sort, the basic implementation is top-down. This algorithm has runtime
+Theta(n log n) and runspace Theta(n) (Top Down Merge Sort slide, Chpt 8, Sorting
+Algorithms, Course Notes). 
+
+For quick sort, the worst case runtime is Theta(n^2), but the average runtime is
+Theta(n log n) (Cormen QuickSort slide, Chpt 8, Sorting Algorithms, Course
+Notes). The worst case runtime is often incurred when the input range is sorted,
+and when the input range has a lot of duplicate elements (Cormen Quick Sort
+slide narrative, Chpt 8, Sorting Algorithms, Course Notes). The runspace is no
+better than Omega(n), because the recursive nature of the program means calls
+are placed on the stack for each run through (Cormen Quick Sort slide narrative,
+Chpt 8, Sorting Algorithms, Course Notes).
+
+Data Analysis Process or Procedure
+
+i    Specific optimizations made
+
+I used the following code to check if a merge was necessary:
+if(*(mid-1) < *mid)
+{
+  //do nothing
+}
+else
+{
+  mergesort::Merge (beg, mid, end); //or end, cmp), as needed
+}
+
+This meant that if by luck the left hand set topmost item was less than the
+bottommost item of the right hand set, they were already in order and sorting
+was unnecessary. 
+
+ii   How any optional constants, such as the "cutoff" size, were chosen, and
+why. (This is a good place for some experimentation.)
+
+After running sortspy.x on all cutoffs from 4-16 (inclusive), on a ranint file
+of size 10,000, I observed the following: g_quick_sort_opt and g_merge_sort_opt
+run the fastest. g_merge_sort_opt hits its fastest speed when cutoff == 8 and
+does not get obviously better after that.  g_quick_sort_opt gets faster until
+cutoff == 11 and does not get obviously better after that. q_quick_sort_3w_opt
+is fairly constant, but faster than g_quick_sort_3w at a cutoff of 13. After
+discovering these cutoffs, I set the algorithms to them for the rest of the
+comparisons.
+
+iii  What gains are made by the optimizations - preferable broken down by data
+characteristics (such as "random", "almost sorted", "few unique keys").
+
+Randomized input tracked closely to the behaviour shown in the cutoff
+experiments; unsurprising, since I used the same input for both. The only
+difference was the faster behaviour of the optimized algorithms.
+
+Uniform input was interesting; quick sort and optimized quick sort performed
+terribly, but the 3w variations were much better (as predicted by those
+descriptions in the project 2 assignment page). Merge performed only slightly
+better than on a randomized input, better than the vanilla quick sorts but 20-30
+times the time it took for the 3w quick sorts to do the same work.
+
+Even a relatively small ordered input file slowed down quick sort 3w; 36
+characters took almost a quarter of the time the same algorithm used to sort a
+uniform input of 10000 characters. It was slower than any other algorithm on a
+reverse input, as well, but faster than the inorder version.
+
+For an empty file, merge sort took the longest, followed by a 3 way tie between
+heap sort, merge sort opt, and insertion sort.
+
+Analysis Results
+Conclusions: If you expect a great deal of similar input, quick sort with 3w
+optimized is the best algorithm. If you expect highly randomized input, vanilla
+optimized quick sort is best. If you expect much of that input to be already
+sorted, however, then quick sort 3w will peform poorly; only use the opt
+version.
+
+Recommendations
+See Analysis.
+
+Appendix 1
+Tables of collected data [time in particular] used to back up conclusions an
+analysis.
+
+Run times of all algorithms on 10000 integers for various optimization cutoff
+values (.txt was required for the deliverable; for better formatting, please
+see cutoff.pdf):
+ cutoff:				4			5
+ 6			7	  8   9   10   11   12   13   14   15   16
+ g_selection_sort		  0.387747     0.388138	 0.387678  0.388292
+ 0.387991	0.387166	0.386903 0.389962 0.387792 0.388238 0.386957
+ 0.386612 0.387410
+ g_insertion_sort		0.225410	0.225152	0.224732
+ 0.225219	0.224814	0.226113 0.224674 0.225025 0.225062 0.224480
+ 0.224461 0.224549 0.225440
+ g_quick_sort			0.003496	0.003307	0.003338
+ 0.003304	0.003324	0.003312 0.003355 0.003310 0.003320 0.003307
+ 0.003317 0.003309 0.003315
+ g_quick_sort_opt	0.003209	0.003170	0.003154	0.003165
+ 0.003142	0.003100	0.003137 0.003076 0.003069 0.003056 0.003050
+ 0.003066 0.003042
+ g_quick_sort_3w		0.004229	0.004225	0.004256
+ 0.004225	0.004227	0.004242 0.004252 0.004283 0.004259 0.004350
+ 0.004237 0.004231 0.004247
+ g_quick_sort_3w_opt	0.004227	0.004227	0.004243	0.004226
+ 0.004238	0.004242	0.004226 0.004229 0.004252 0.004230 0.004247
+ 0.004238 0.004239
+ g_merge_sort			0.003940	0.003937	0.003927
+ 0.003940	0.003958	0.003932 0.003934 0.003931 0.003931 0.003933
+ 0.003925 0.003950 0.003952
+ g_merge_sort_opt		0.003264	0.003256	0.003279
+ 0.003219	0.003061	0.003056 0.003058 0.003059 0.003056 0.003063
+ 0.003060 0.003057 0.003058
+ g_merge_sort_bu	0.003729	0.003747	0.003723	0.003723
+ 0.003725	0.003726	0.003729 0.003750 0.003723 0.003725 0.003725
+ 0.003791 0.003732
+ List::Sort			0.003915	0.003942	0.003927
+ 0.003918	0.003918	0.003891 0.003915 0.003930 0.003954 0.003883
+ 0.003915 0.003918 0.003918
+ alt::g_heap_sort	0.005467	0.005443	0.005459	0.005451
+ 0.005446	0.005574	0.005502 0.005557 0.005478 0.005447 0.005473
+ 0.005652 0.005486
+ fsu::g_heap_sort		0.005378	0.005365	0.005360
+ 0.005342	0.005342	0.005456 0.005389 0.005445 0.005368 0.005339
+ 0.005365 0.005362 0.005384
+ cormen::g_heap_sort	0.005316	0.005308	0.005324	0.005316
+ 0.005333	0.005417	0.005350 0.005391 0.005324 0.005310 0.005331
+ 0.005472 0.005360
+
+ runtimes of various algorithms for various types of input. (.txt was required for
+the deliverable; for better formatting, please see randomsortedinput.pdf)
+				    random input  uniform input	inorder input
+				    reverse input empty
+ g_selection_sort			    0.387290		0.385907
+				    0.000000		0.000000  0.000000
+ g_insertion_sort					0.236658	0.000142
+				    0.000001		0.000000  0.000001
+ g_quick_sort							  0.003945
+				    0.787188		0.000000  0.000000
+				    0.000000
+ g_quick_sort_opt			0.003066		0.786254
+				    0.000001		0.000000  0.000000
+ g_quick_sort_3w					0.004098	0.000146
+				    0.000031		0.000010  0.000000
+ g_quick_sort_3w_opt		    0.004097			  0.000144
+				    0.000000		0.000000  0.000000
+ g_merge_sort						0.003970	0.002737
+				    0.000000		0.000001  0.000004
+ g_merge_sort_opt					0.003262	0.001989
+				    0.000001		0.000000  0.000001
+ g_merge_sort_bu					0.003737	0.002541
+				    0.000000		0.000000  0.000000
+ List::Sort							  0.003890
+				    0.002266		0.000000  0.000001
+				    0.000000
+ alt::g_heap_sort			0.005447		0.000741
+				    0.000001		0.000000  0.000000
+ fsu::g_heap_sort					0.005347	0.000681
+				    0.000000		0.000000  0.000000
+ cormen::g_heap_sort		    0.005519			  0.000656
+				    0.000000		0.000000  0.000001
+
+
+Appendix 2
+Give detailed descriptions of all input files, including how they were built,
+there size, and constraints on content. (Do not put the actual input files in
+the report.)
+
+Input file for testing various cutoff values was formed using ranuint.x, with a
+range of 10000 and a size of 10000.
+
+Input file for testing randomized input were formed using ranuint.x, with a
+range of 10000 and a size of 10000.
+
+Input files for testing ranges with elements in order or in reverse order were
+created by hand, containing a sorted alphabet and numerals in forward and
+reverse order.
+
+Input file for testing ranges with the same element at each location were formed
+with ranuint.x with a range of 1 and a size of 10000.
